@@ -3508,3 +3508,8 @@ details-disclosure > details {
 .js.product-form__input.product-form__input--pill input.disabled + label {
     display: none;
 }
+
+h2,h3,h4{
+  color:red !important;
+
+}
