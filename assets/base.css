@@ -155,6 +155,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   .page-width-desktop {
     max-width: var(--page-width);
     padding: 0 5rem;
+  
   }
 }
 
@@ -3512,4 +3513,7 @@ details-disclosure > details {
 h2,h3,h4{
   color:red !important;
 
+}
+.price__regular {
+    color: green !important;
 }
