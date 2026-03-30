@@ -1,0 +1,113 @@
+{% schema %}
+{
+  "name": "Custom Image with Text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Select Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Heading Here"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Write something about your product here."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image Position",
+      "options": [
+        { "value": "left", "label": "Image Left" },
+        { "value": "right", "label": "Image Right" }
+      ],
+      "default": "left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Image with Text"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-image-text {% if section.settings.layout == 'right' %}reverse{% endif %}">
+
+  <div class="image">
+    {% if section.settings.image %}
+      <img src="{{ section.settings.image | image_url }}" alt="">
+    {% endif %}
+  </div>
+
+  <div class="content">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.text }}</p>
+
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_link }}" class="btn">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+
+</div>
+
+<style>
+.custom-image-text {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+.custom-image-text.reverse {
+  flex-direction: row-reverse;
+}
+
+.custom-image-text .image img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.custom-image-text .content {
+  max-width: 500px;
+}
+
+.custom-image-text .btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: black;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media(max-width: 768px){
+  .custom-image-text {
+    flex-direction: column;
+    text-align: center;
+  }
+  .custom-image-text.reverse {
+    flex-direction: column;
+  }
+}
+</style>
